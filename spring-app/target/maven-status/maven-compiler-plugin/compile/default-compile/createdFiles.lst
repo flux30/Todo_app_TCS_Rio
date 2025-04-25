@@ -1,0 +1,5 @@
+com\example\Todo.class
+com\example\TodoRepository.class
+com\example\TodoController.class
+com\example\SpringAppApplication$HealthCheckController.class
+com\example\SpringAppApplication.class

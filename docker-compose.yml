@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tododb
+      MYSQL_USER: todouser
+      MYSQL_PASSWORD: password
+    ports:
+      - "3310:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  todo-app:
+    build: .
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+    volumes:
+      - ./spring-app:/app/spring-app
+      - ./frontend/dist:/opt/tomcat/webapps/ROOT
+
+volumes:
+  mysql-data:
